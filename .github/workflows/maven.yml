@@ -39,6 +39,11 @@ jobs:
         run: |
           echo "coverage = ${{ steps.jacoco.outputs.coverage}}"
           echo "branches = ${{ steps.jacoco.outputs.branches}}"
+      - name: Upload JaCoCo coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
 
       - name: Codecov
         uses: codecov/codecov-action@v3.1.0
